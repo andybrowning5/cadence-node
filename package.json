@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "esbuild src/agent.js --bundle --platform=node --format=esm --outfile=bundle.mjs"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0"
   }

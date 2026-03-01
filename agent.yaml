@@ -11,8 +11,8 @@ author:
 
 runtime:
   language: node
-  setup_command: npm install
-  run_command: node src/agent.js
+  setup_command: test -f bundle.mjs || npm install
+  run_command: node bundle.mjs 2>/dev/null || node src/agent.js
   dependencies: package.json
   default_model:
     provider: anthropic
