@@ -1,0 +1,38 @@
+name: cadence-node
+display_name: "Cadence - Task Prioritization Agent (Node.js)"
+version: 0.2.0
+description: "AI-powered task prioritization agent. Tell Cadence your tasks and deadlines, and it suggests an optimal order. Remembers your tasks across sessions using local filesystem memory. Node.js port — faster sandbox setup via npm install."
+category: productivity
+tags: [tasks, productivity, prioritization, memory]
+
+author:
+  name: Andy Browning
+  github: andybrowning5
+
+runtime:
+  language: node
+  setup_command: npm install
+  run_command: node src/agent.js
+  dependencies: package.json
+  default_model:
+    provider: anthropic
+    model: claude-haiku-4-5-20251001
+  resources:
+    max_memory: 2GB
+    max_cpu: 2
+
+keys:
+  - provider: anthropic
+    env_var: ANTHROPIC_API_KEY
+    domain: api.anthropic.com
+    auth_style: x-api-key
+    required: true
+
+permissions:
+  network:
+    - domain: api.anthropic.com
+      reason: LLM API access
+  filesystem:
+    workspace: readwrite
+  delegation:
+    enabled: true
